@@ -25,7 +25,7 @@ def load_config(profile,filename = None):
   global config
   if not filename:
     home = str(Path.home())
-    filename = os.path.join(home,".thierazikConfig.json") # use a default config
+    filename = os.path.join(home,"thierazikConfig.json") # use a default config
     if not os.path.isfile(filename):
       raise Exception(f"If no 'filename' paramater specifed, assume '.thierazikConfig.json' exists at HOME: {home}")
 
