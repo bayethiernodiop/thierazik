@@ -2,6 +2,12 @@
 
 import setuptools
 
+def parse_requirements(requirements):
+    with open(requirements) as f:
+        return [l.strip('\n') for l in f if l.strip('\n') and not l.startswith('#')]
+
+
+reqs = parse_requirements("requirements.txt")  
 
 with open('README.md') as f:
     README = f.read()
@@ -15,7 +21,7 @@ setuptools.setup(
     long_description=README,
     packages=setuptools.find_packages(),
     python_requires=">=3.7",
-    install_requires=[],
+    install_requires=reqs,
     classifiers=[
         # Trove classifiers
         # (https://pypi.python.org/pypi?%3Aaction=list_classifiers)
