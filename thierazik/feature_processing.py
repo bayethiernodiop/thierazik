@@ -1,5 +1,7 @@
 from pandas.api.types import is_numeric_dtype
 import numpy as np
+import re
+import pandas as pd
 # Encode a numeric column as zscores
 def encode_numeric_zscore(df, name, mean=None, sd=None):
     if mean is None:

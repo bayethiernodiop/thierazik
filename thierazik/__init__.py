@@ -18,7 +18,7 @@ from thierazik.train_catboost import TrainCatBoost
 
 from thierazik.HyperOptimizer import *
 from thierazik.model_evaluation import *
-
+from thierazik.explorer import *
 config = {}
 
 def load_config(profile,filename = None):
