@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 from thierazik import const
-from thierazik.ensemble_glm import ensemble
+from thierazik.ensemble_glm import *
 from thierazik.joiner import perform_join
 from thierazik import util
 from thierazik.util import *

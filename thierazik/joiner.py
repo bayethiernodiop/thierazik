@@ -5,6 +5,7 @@ import thierazik
 import thierazik.util
 from sklearn.model_selection import KFold,StratifiedKFold
 from thierazik.const import NA_VALUES
+import numpy as np
 def perform_join(profile_name):
     train_id = thierazik.config['TRAIN_ID']
     test_id = thierazik.config['TEST_ID']
@@ -120,3 +121,24 @@ def perform_join(profile_name):
     thierazik.util.save_pandas(df_test_joined,f"test-joined-{profile_name}.pkl")
     thierazik.util.save_pandas(df_train_joined,f"train-joined-{profile_name}.csv")
     thierazik.util.save_pandas(df_test_joined,f"test-joined-{profile_name}.csv")
+
+def join_oos_for_meta_model_finetuning(models):
+    ensemble_oos_df = []
+    columns_name = []
+    print("Loading models...")
+    for model in models:
+        dash_idx = model.find('-')
+        prefix = model[:dash_idx]
+        columns_name.append(f"{prefix}_preds")
+        print("Loading: {}".format(model))
+        df_oos,_ = thierazik.util.load_model_preds(model)
+        ensemble_oos_df.append( df_oos )
+
+
+    ens_y = np.array(ensemble_oos_df[0]['expected'])
+    ens_x = np.zeros((ensemble_oos_df[0].shape[0],len(models)))
+
+    for i, df in enumerate(ensemble_oos_df):
+        ens_x[:,i] = df['predicted']
+    ens_df = pd.DataFrame(ens_x,columns=columns_name)
+    return ens_df,ens_y

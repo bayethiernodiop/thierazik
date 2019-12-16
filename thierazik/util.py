@@ -82,8 +82,8 @@ def load_model_preds(model_name):
     train_id = thierazik.config['TRAIN_ID']
     test_id = thierazik.config['TEST_ID']
     
-    idx = model_name.find('-')
-    suffix = model_name[idx:]
+    dash_idx = model_name.find('-')
+    suffix = model_name[dash_idx:]
     
     path = os.path.join(thierazik.config['PATH'], model_name)
     filename_oos = "oos" + suffix + ".csv"

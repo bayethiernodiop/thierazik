@@ -40,7 +40,7 @@ def ensemble(models,blender):
     target_name = thierazik.config['TARGET_NAME']
     ensemble_oos_df = []
     ensemble_submit_df = []
-
+    
     print("Loading models...")
     for model in models:
         print("Loading: {}".format(model))
@@ -71,9 +71,6 @@ def ensemble(models,blender):
 
     y_train = x_train[target_name]
     train_ids = x_train[train_id]
-    x_train.drop(train_id, axis=1, inplace=True)
-    x_train.drop('fold', axis=1, inplace=True)
-    x_train.drop(target_name, axis=1, inplace=True)
 
     final_preds_train = np.zeros(x_train.shape[0])
     scores = []
@@ -81,7 +78,6 @@ def ensemble(models,blender):
         fold_no = fold_idx + 1
         print("*** Fold #{} ***".format(fold_no))
 
-        # x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_size=0.2, random_state=4242)
         mask_train = np.array(folds != fold_no)
         mask_test = np.array(folds == fold_no)
         fold_x_train = ens_x[mask_train]
@@ -122,7 +118,8 @@ def ensemble(models,blender):
 
 
 
-    path, score_str, time_str,folder_name = thierazik.util.create_submit_package("blend", score)
+    path, score_str, time_str,folder_name = thierazik.util.create_submit_package(
+        f"blend_{blender.__class__.__name__}", score)
     filename = "submit-" + score_str + "_" + time_str
     filename_csv = os.path.join(path, filename) + ".csv"
     filename_txt = os.path.join(path, filename) + ".txt"
