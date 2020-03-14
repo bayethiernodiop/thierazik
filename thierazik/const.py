@@ -8,3 +8,4 @@ NA_VALUES = ['NA', '?', '-inf', '+inf', 'inf', '', 'nan']
 EVAL_R2 = "r2"
 EVAL_LOGLOSS = "logloss"
 EVAL_AUC = "auc"
+EVAL_F1 = "f1"

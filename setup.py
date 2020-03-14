@@ -16,7 +16,7 @@ setuptools.setup(
     author="Thierno Ibrahima DIOP & Younes RAZIK",
     name='thierazik',
     license="MIT",
-    description='A library to fasten the creation of models and ensembling in kaggle like plateform',
+    description='A library froked from  jeff heaton (i.e jh-kaggle-util) to fasten the creation of models and ensembling in kaggle or zindi like plateform',
     version='v0',
     long_description=README,
     packages=setuptools.find_packages(),

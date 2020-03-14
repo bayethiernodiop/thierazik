@@ -1,4 +1,4 @@
-A library to fasten the creation of models and ensembling in kaggle like plateform
+A library froked from  jeff heaton (i.e jh-kaggle-util) to fasten the creation of models and ensembling in kaggle like plateform
 to use it : 
 1 - clone the project
 2 - move inside the cloned folder
