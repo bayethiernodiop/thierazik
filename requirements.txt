@@ -11,7 +11,7 @@ hyperopt==0.2.2
 keyboard==0.13.4
 tqdm==4.31.1
 catboost==0.18.1
-tensorflow==2.0.0
+tensorflow==2.5.1
 lightgbm==2.3.0
 xgboost==0.82
 
